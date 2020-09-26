@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+.idea/vcs.xml
+.idea/aws.xml
+.idea/modules.xml
+.idea/codeStyles/codeStyleConfig.xml
+.idea/th-js-project-01-RQG.iml
