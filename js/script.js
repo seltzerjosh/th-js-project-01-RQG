@@ -46,6 +46,14 @@ function getRandomQuote(quotes) {
     //This allows for a redundancy check against show the same quote twice in a row
 let randomQuote = getRandomQuote(quotes);
 
+
+//function to randomize the color, called in printQuote
+function randomizeColor() {
+let color = () => (Math.floor(Math.random() * 256));
+let randomRGB = `rgb( ${color()}, ${color()}, ${color()} )`;
+document.getElementById('body').style.backgroundColor = randomRGB;
+}
+
 //printQuote function defines a newRandomQuote as a call to getRandomQuote, and redoes this until it is not the same as random Quote
 //Once this do while is successful, newRandomQuote replaces randomQuote, and is no longer used until the next call.
 // It then populates the proper HTML to quoteSource and returns the "new" randomQuote.
@@ -65,8 +73,10 @@ function printQuote() {
     }
     quoteSource += '</p>';
     document.getElementById('quote-box').innerHTML = quoteSource;
+    randomizeColor();
     return randomQuote;
 }
+
 printQuote();
 
 //Activates the 'Show another quote' button
