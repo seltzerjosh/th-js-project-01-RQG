@@ -9,26 +9,34 @@
 const quotes = []; //This line setsup quotes as an empty array
 
 //Function that checks for truthy quote and source, and optional citation and year before pushing new quote to array
-function addQuote(quote, source, citation, year) {
+function addQuote(quote, source, citation, year, picture) {
     if (!quote || !source) {
         console.log(`${quote} ${source} 'Needs a quote and source.'`);
-    } else if (!citation && !year) {
+    } else if (!citation && !year && !picture) {
         quotes.push({quote, source});
-    } else if (!citation) {
+    } else if (!citation && !picture) {
         quotes.push({quote, source, year});
-    } else if (!year) {
+    } else if (!year && !picture) {
         quotes.push({quote, source, citation});
-    } else {
+    } else if (!year && !citation) {
+        quotes.push({quote, source, picture});
+    } else if (!year) {
+        quotes.push({quote, source, citation, picture});
+    } else if (!citation) {
+        quotes.push({quote, source, year, picture});
+    } else if (!picture) {
         quotes.push({quote, source, citation, year});
+    } else {
+        quotes.push({quote, source, citation, year, picture});
     }
 }
 
 //Adding quotes
-addQuote('You miss 100% of the shots you don’t take', 'Wayne Gretzky', 'forbes.com', '2013');
-addQuote('You know you\'re in love when you can\'t fall asleep because reality is finally better than your dreams', 'Dr. Seuss', 'goodreads.com');
-addQuote('Learn JavaScript and you\'ll be fine', 'r4',);
-addQuote('What do you have to lose? ', 'Anonymous', '', '2020');
-addQuote('Just keep at it every day.', 'Anonymous', '', '2020');
+addQuote('You miss 100% of the shots you don’t take', 'Wayne Gretzky', 'forbes.com', '2013', 'https://upload.wikimedia.org/wikipedia/commons/0/03/Wayne_Gretzky_2006-02-18_Turin_001.jpg');
+addQuote('You know you\'re in love when you can\'t fall asleep because reality is finally better than your dreams', 'Dr. Seuss', 'goodreads.com', '', 'https://upload.wikimedia.org/wikipedia/commons/1/1c8/Theodor_Seuss_Geisel_%2801037v%29.jpg');
+addQuote('Learn JavaScript and you\'ll be fine', 'r4', '', '', '');
+addQuote('What do you have to lose? ', 'Anonymous', '', '2020', '');
+addQuote('Just keep at it every day.', 'Anonymous', '', '2020', '');
 
 /***
  * `getRandomQuote` function
@@ -43,15 +51,14 @@ function getRandomQuote(quotes) {
  ***/
 
 //Populates the randomQuote outside of the function to allow for a do while statement within the printQuote function
-    //This allows for a redundancy check against show the same quote twice in a row
+//This allows for a redundancy check against show the same quote twice in a row
 let randomQuote = getRandomQuote(quotes);
-
 
 //function to randomize the color, called in printQuote
 function randomizeColor() {
-let color = () => (Math.floor(Math.random() * 256));
-let randomRGB = `rgb( ${color()}, ${color()}, ${color()} )`;
-document.getElementById('body').style.backgroundColor = randomRGB;
+    let color = () => (Math.floor(Math.random() * 256));
+    let randomRGB = `rgb( ${color()}, ${color()}, ${color()} )`;
+    document.getElementById('body').style.backgroundColor = randomRGB;
 }
 
 //printQuote function defines a newRandomQuote as a call to getRandomQuote, and redoes this until it is not the same as random Quote
@@ -74,9 +81,10 @@ function printQuote() {
     quoteSource += '</p>';
     document.getElementById('quote-box').innerHTML = quoteSource;
     randomizeColor();
-    return randomQuote;
+    return randomQuote
 }
 
+randomQuote = getRandomQuote(quotes);
 printQuote();
 
 //Activates the 'Show another quote' button
