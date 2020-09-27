@@ -49,6 +49,7 @@ let randomQuote = getRandomQuote(quotes);
 //printQuote function defines a newRandomQuote as a call to getRandomQuote, and redoes this until it is not the same as random Quote
 //Once this do while is successful, newRandomQuote replaces randomQuote, and is no longer used until the next call.
 // It then populates the proper HTML to quoteSource and returns the "new" randomQuote.
+
 function printQuote() {
     let newRandomQuote = getRandomQuote(quotes);
     do {
@@ -64,10 +65,9 @@ function printQuote() {
     }
     quoteSource += '</p>';
     document.getElementById('quote-box').innerHTML = quoteSource;
-    return randomQuote
+    return randomQuote;
 }
-
-//This is the first call to printQuote, which starts off the cycle
 printQuote();
+
 //Activates the 'Show another quote' button
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
