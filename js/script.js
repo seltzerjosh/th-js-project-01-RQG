@@ -33,7 +33,7 @@ function addQuote(quote, source, citation, year, picture) {
 
 //Adding quotes
 addQuote('You miss 100% of the shots you don’t take', 'Wayne Gretzky', 'forbes.com', '2013', 'https://upload.wikimedia.org/wikipedia/commons/0/03/Wayne_Gretzky_2006-02-18_Turin_001.jpg');
-addQuote('You know you\'re in love when you can\'t fall asleep because reality is finally better than your dreams', 'Dr. Seuss', 'goodreads.com', '', 'https://upload.wikimedia.org/wikipedia/commons/1/1c8/Theodor_Seuss_Geisel_%2801037v%29.jpg');
+addQuote('You know you\'re in love when you can\'t fall asleep because reality is finally better than your dreams', 'Dr. Seuss', 'goodreads.com', '', 'https://upload.wikimedia.org/wikipedia/commons/1/19/Ted_Geisel_NYWTS_2_sepia.jpg');
 addQuote('Learn JavaScript and you\'ll be fine', 'r4', '', '', '');
 addQuote('What do you have to lose? ', 'Anonymous', '', '2020', '');
 addQuote('Just keep at it every day.', 'Anonymous', '', '2020', '');
@@ -79,6 +79,10 @@ function printQuote() {
         quoteSource += `<span class="year">${randomQuote.year}</span>`;
     }
     quoteSource += '</p>';
+    if (randomQuote.picture) {
+        quoteSource += `<img src=${randomQuote.picture} alt="author" width="128" height="160"></img>`;
+        console.log(quoteSource);
+    }
     document.getElementById('quote-box').innerHTML = quoteSource;
     randomizeColor();
     return randomQuote
