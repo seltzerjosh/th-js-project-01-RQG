@@ -22,6 +22,7 @@ function addQuote(quote, source, citation, year) {
         quotes.push({quote, source, citation, year});
     }
 }
+
 //Adding quotes
 addQuote('You miss 100% of the shots you don’t take', 'Wayne Gretzky', 'forbes.com', '2013');
 addQuote('You know you\'re in love when you can\'t fall asleep because reality is finally better than your dreams', 'Dr. Seuss', 'goodreads.com');
@@ -46,8 +47,8 @@ function getRandomQuote(quotes) {
 let randomQuote = getRandomQuote(quotes);
 
 //printQuote function defines a newRandomQuote as a call to getRandomQuote, and redoes this until it is not the same as random Quote
-    //Once this do while is successful, newRandomQuote replaces randomQuote, and is no longer used until the next call.
-    // It then populates the proper HTML to quoteSource and returns the "new" randomQuote.
+//Once this do while is successful, newRandomQuote replaces randomQuote, and is no longer used until the next call.
+// It then populates the proper HTML to quoteSource and returns the "new" randomQuote.
 function printQuote() {
     let newRandomQuote = getRandomQuote(quotes);
     do {
