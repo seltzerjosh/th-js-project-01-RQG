@@ -6,37 +6,32 @@
 /***
  * `quotes` array
  ***/
-const quotes = []; //This line sets up quotes as an empty array
-
-//Function that checks for truthy quote and source, and optional citation and year before pushing new quote to array
-function addQuote(quote, source, citation, year, picture) {
-    if (!quote || !source) {
-        console.log(`${quote} ${source} 'Needs a quote and source.'`);
-    } else if (!citation && !year && !picture) {
-        quotes.push({quote, source});
-    } else if (!citation && !picture) {
-        quotes.push({quote, source, year});
-    } else if (!year && !picture) {
-        quotes.push({quote, source, citation});
-    } else if (!year && !citation) {
-        quotes.push({quote, source, picture});
-    } else if (!year) {
-        quotes.push({quote, source, citation, picture});
-    } else if (!citation) {
-        quotes.push({quote, source, year, picture});
-    } else if (!picture) {
-        quotes.push({quote, source, citation, year});
-    } else {
-        quotes.push({quote, source, citation, year, picture});
+const quotes = [
+    {
+        quote: 'You miss 100% of the shots you don’t take',
+        source: 'Wayne Gretzky',
+        citation: 'forbes.com',
+        year: '2013',
+        picture: 'https://upload.wikimedia.org/wikipedia/commons/0/03/Wayne_Gretzky_2006-02-18_Turin_001.jpg'
+    },
+    {
+        quote: "You know you're in love when you can't fall asleep because reality is finally better than your dreams",
+        source: 'Dr. Seuss',
+        citation: 'goodreads.com',
+        picture: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Ted_Geisel_NYWTS_2_sepia.jpg'
+    },
+    { quote: "Learn JavaScript and you'll be fine", source: 'r4' },
+    {
+        quote: 'What do you have to lose? ',
+        source: 'Anonymous',
+        year: '2020'
+    },
+    {
+        quote: 'Just keep at it every day.',
+        source: 'Anonymous',
+        year: '2020'
     }
-}
-
-//Adding quotes - picture URLs from wikipedia
-addQuote('You miss 100% of the shots you don’t take', 'Wayne Gretzky', 'forbes.com', '2013', 'https://upload.wikimedia.org/wikipedia/commons/0/03/Wayne_Gretzky_2006-02-18_Turin_001.jpg');
-addQuote('You know you\'re in love when you can\'t fall asleep because reality is finally better than your dreams', 'Dr. Seuss', 'goodreads.com', '', 'https://upload.wikimedia.org/wikipedia/commons/1/19/Ted_Geisel_NYWTS_2_sepia.jpg');
-addQuote('Learn JavaScript and you\'ll be fine', 'r4', '', '', '');
-addQuote('What do you have to lose? ', 'Anonymous', '', '2020', '');
-addQuote('Just keep at it every day.', 'Anonymous', '', '2020', '');
+];
 
 /***
  * `getRandomQuote` function
@@ -71,7 +66,7 @@ function printQuote() {
         newRandomQuote = getRandomQuote(quotes);
     } while (randomQuote === newRandomQuote);
     randomQuote = newRandomQuote;
-    let quoteSource = `<p class="quotes">${randomQuote.quote}</p><p class="source">${randomQuote.source}`;
+    let quoteSource = `<p class="quote">${randomQuote.quote}</p><p class="source">${randomQuote.source}`;
     if (randomQuote.citation) {
         quoteSource += `<span class="citation">${randomQuote.citation}</span>`;
     }
@@ -89,14 +84,14 @@ function printQuote() {
 
 //starts off the refresh
 function startRefresh() {
-    timer = setInterval(printQuote, 1000);
+    timer = setInterval(printQuote, 10000);
 }
 
 //resets the refresh
 function resetInterval() {
     printQuote();
     clearInterval(timer);
-    timer = setInterval(printQuote, 1000);
+    timer = setInterval(printQuote, 10000);
 }
 
 //Initializes print quote (first quote of the site)
