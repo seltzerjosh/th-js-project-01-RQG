@@ -86,25 +86,21 @@ function printQuote() {
     randomizeColor();
     return randomQuote
 }
-
-//Initializes print quote (first quote of hte site)
-printQuote();
-//Initializes a timer for start and reset functions
-let timer = ''
-
 //starts off the refresh
 function startRefresh() {
     timer = setInterval(printQuote, 1000);
-    console.log('startRefresh');
 }
-
 //resets the refresh
 function resetInterval() {
     printQuote();
     clearInterval(timer);
     timer = setInterval(printQuote, 1000);
 }
+//Initializes print quote (first quote of hte site)
+printQuote();
+//Initializes a timer for start and reset functions
+let timer = ''
+//Starts off the cycle for the website auto-refresh
 startRefresh();
-
-//Refresh on click
+//Refresh on click modified from original requirement to allow for refresh interval to rest to 0
 document.getElementById('load-quote').addEventListener("click", resetInterval, false);
