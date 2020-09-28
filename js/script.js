@@ -31,7 +31,7 @@ function addQuote(quote, source, citation, year, picture) {
     }
 }
 
-//Adding quotes
+//Adding quotes - picture URLs from wikipedia
 addQuote('You miss 100% of the shots you don’t take', 'Wayne Gretzky', 'forbes.com', '2013', 'https://upload.wikimedia.org/wikipedia/commons/0/03/Wayne_Gretzky_2006-02-18_Turin_001.jpg');
 addQuote('You know you\'re in love when you can\'t fall asleep because reality is finally better than your dreams', 'Dr. Seuss', 'goodreads.com', '', 'https://upload.wikimedia.org/wikipedia/commons/1/19/Ted_Geisel_NYWTS_2_sepia.jpg');
 addQuote('Learn JavaScript and you\'ll be fine', 'r4', '', '', '');
@@ -81,15 +81,30 @@ function printQuote() {
     quoteSource += '</p>';
     if (randomQuote.picture) {
         quoteSource += `<img src=${randomQuote.picture} alt="author" width="128" height="160"></img>`;
-        console.log(quoteSource);
     }
     document.getElementById('quote-box').innerHTML = quoteSource;
     randomizeColor();
     return randomQuote
 }
 
-randomQuote = getRandomQuote(quotes);
+//Initializes print quote (first quote of hte site)
 printQuote();
+//Initializes a timer for start and reset functions
+let timer = ''
 
-//Activates the 'Show another quote' button
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+//starts off the refresh
+function startRefresh() {
+    timer = setInterval(printQuote, 1000);
+    console.log('startRefresh');
+}
+
+//resets the refresh
+function resetInterval() {
+    printQuote();
+    clearInterval(timer);
+    timer = setInterval(printQuote, 1000);
+}
+startRefresh();
+
+//Refresh on click
+document.getElementById('load-quote').addEventListener("click", resetInterval, false);
