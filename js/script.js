@@ -6,7 +6,7 @@
 /***
  * `quotes` array
  ***/
-const quotes = []; //This line setsup quotes as an empty array
+const quotes = []; //This line sets up quotes as an empty array
 
 //Function that checks for truthy quote and source, and optional citation and year before pushing new quote to array
 function addQuote(quote, source, citation, year, picture) {
@@ -50,7 +50,7 @@ function getRandomQuote(quotes) {
  * `printQuote` function
  ***/
 
-//Populates the randomQuote outside of the function to allow for a do while statement within the printQuote function
+//Populates the randomQuote outdside of the function to allow for a do while statement within the printQuote function
 //This allows for a redundancy check against show the same quote twice in a row
 let randomQuote = getRandomQuote(quotes);
 
@@ -86,17 +86,20 @@ function printQuote() {
     randomizeColor();
     return randomQuote
 }
+
 //starts off the refresh
 function startRefresh() {
     timer = setInterval(printQuote, 1000);
 }
+
 //resets the refresh
 function resetInterval() {
     printQuote();
     clearInterval(timer);
     timer = setInterval(printQuote, 1000);
 }
-//Initializes print quote (first quote of hte site)
+
+//Initializes print quote (first quote of the site)
 printQuote();
 //Initializes a timer for start and reset functions
 let timer = ''
