@@ -45,7 +45,7 @@ function getRandomQuote(quotes) {
  * `printQuote` function
  ***/
 
-//Populates the randomQuote outdside of the function to allow for a do while statement within the printQuote function
+//Populates the randomQuote outside of the function to allow for a do while statement within the printQuote function
 //This allows for a redundancy check against show the same quote twice in a row
 let randomQuote = getRandomQuote(quotes);
 
@@ -100,5 +100,5 @@ printQuote();
 let timer = ''
 //Starts off the cycle for the website auto-refresh
 startRefresh();
-//Refresh on click modified from original requirement to allow for refresh interval to rest to 0
+//load-quote click event modified from original requirement to allow for refresh interval to rest to 0
 document.getElementById('load-quote').addEventListener("click", resetInterval, false);
