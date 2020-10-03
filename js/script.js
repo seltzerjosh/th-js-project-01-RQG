@@ -20,7 +20,7 @@ const quotes = [
         citation: 'goodreads.com',
         picture: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Ted_Geisel_NYWTS_2_sepia.jpg'
     },
-    { quote: "Learn JavaScript and you'll be fine", source: 'r4' },
+    {quote: "Learn JavaScript and you'll be fine", source: 'r4'},
     {
         quote: 'What do you have to lose? ',
         source: 'Anonymous',
