@@ -30,6 +30,11 @@ const quotes = [
         quote: 'Just keep at it every day.',
         source: 'Anonymous',
         year: '2020'
+    },
+    {
+        quote: 'that\s a lot of pressure.',
+        source: 'Alex H.',
+        year: '2020'
     }
 ];
 
