@@ -32,7 +32,7 @@ const quotes = [
         year: '2020'
     },
     {
-        quote: 'that\s a lot of pressure.',
+        quote: 'that\'s a lot of pressure.',
         source: 'Alex H.',
         year: '2020'
     }
